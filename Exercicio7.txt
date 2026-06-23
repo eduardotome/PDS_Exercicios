@@ -1,0 +1,95 @@
+package nasd;
+
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Exericio7 extends JFrame {
+
+    private JPanel contentPane;
+    private JTextField txtNome;
+    private JTextField txtNota1;
+    private JTextField txtNota2;
+    private JLabel lblResultado;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+            	Exericio7 frame = new Exericio7();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public Exericio7() {
+        setTitle("Média do Aluno");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 400, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblNome = new JLabel("Nome:");
+        lblNome.setBounds(30, 30, 80, 20);
+        contentPane.add(lblNome);
+
+        txtNome = new JTextField();
+        txtNome.setBounds(120, 30, 200, 20);
+        contentPane.add(txtNome);
+
+        JLabel lblNota1 = new JLabel("Nota 1:");
+        lblNota1.setBounds(30, 70, 80, 20);
+        contentPane.add(lblNota1);
+
+        txtNota1 = new JTextField();
+        txtNota1.setBounds(120, 70, 100, 20);
+        contentPane.add(txtNota1);
+
+        JLabel lblNota2 = new JLabel("Nota 2:");
+        lblNota2.setBounds(30, 110, 80, 20);
+        contentPane.add(lblNota2);
+
+        txtNota2 = new JTextField();
+        txtNota2.setBounds(120, 110, 100, 20);
+        contentPane.add(txtNota2);
+
+        JButton btnCalcular = new JButton("Calcular Média");
+        btnCalcular.setBounds(120, 150, 150, 25);
+        contentPane.add(btnCalcular);
+
+        lblResultado = new JLabel("");
+        lblResultado.setBounds(30, 200, 300, 20);
+        contentPane.add(lblResultado);
+
+        btnCalcular.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                String nome = txtNome.getText();
+                double nota1 = Double.parseDouble(txtNota1.getText());
+                double nota2 = Double.parseDouble(txtNota2.getText());
+
+                double media = (nota1 + nota2) / 2;
+
+                String situacao;
+
+                if (media >= 7) {
+                    situacao = "Aprovado";
+                } else {
+                    situacao = "Reprovado";
+                }
+
+                lblResultado.setText(nome + " - Média: " + 
+                    String.format("%.2f", media) + " - " + situacao);
+            }
+        });
+    }
+}

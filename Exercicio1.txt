@@ -1,0 +1,73 @@
+package nasd;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Conversao extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtFaren;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Conversao frame = new Conversao();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Conversao() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtFaren = new JTextField();
+		txtFaren.setBounds(136, 109, 114, 20);
+		contentPane.add(txtFaren);
+		txtFaren.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Calcular para Celsius");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String Faren = txtFaren.getText();
+				double Faren1 = Double.parseDouble(Faren);
+				double celsius = (Faren1 - 32) * 5/9;
+				JOptionPane.showMessageDialog(null, "Para faren " + celsius);
+				
+				
+			}
+		});
+		btnNewButton.setBounds(107, 191, 175, 23);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("Temperatura em Farenheit");
+		lblNewLabel.setBounds(119, 36, 221, 41);
+		contentPane.add(lblNewLabel);
+
+	}
+}
