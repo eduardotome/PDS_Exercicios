@@ -1,0 +1,90 @@
+package nasd;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Aula extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtbase;
+	private JTextField txtaltura;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Aula frame = new Aula();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Aula() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Base ");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(62, 59, 46, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Altura ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(62, 101, 98, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtbase = new JTextField();
+		txtbase.setBounds(154, 59, 86, 20);
+		contentPane.add(txtbase);
+		txtbase.setColumns(10);
+		
+		txtaltura = new JTextField();
+		txtaltura.setBounds(154, 101, 86, 20);
+		contentPane.add(txtaltura);
+		txtaltura.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Calcular ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String base = txtbase.getText();
+				String altura = txtaltura.getText();
+				double altura1 = Double.parseDouble(altura);
+				double base1 = Double.parseDouble(base);
+				double perimetro = 2 *(base1 + altura1);
+				double area = base1 * altura1;
+				
+				JOptionPane.showMessageDialog(null, "Perimetro: " + perimetro +   " \nArea: " + area);
+				
+				
+			}
+		});
+		btnNewButton.setBounds(154, 186, 89, 23);
+		contentPane.add(btnNewButton);
+
+	}
+}

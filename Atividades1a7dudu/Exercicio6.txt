@@ -1,0 +1,141 @@
+package nasd;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class Exercicio6 extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtnumero1;
+	private JTextField txtnumero2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Exercicio6 frame = new Exercicio6();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Exercicio6() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtnumero1 = new JTextField();
+		txtnumero1.setBounds(157, 11, 86, 20);
+		contentPane.add(txtnumero1);
+		txtnumero1.setColumns(10);
+		
+		txtnumero2 = new JTextField();
+		txtnumero2.setBounds(157, 63, 86, 20);
+		contentPane.add(txtnumero2);
+		txtnumero2.setColumns(10);
+		
+		JLabel ResultadoConta = new JLabel("");
+		ResultadoConta.setBounds(36, 221, 120, 14);
+		contentPane.add(ResultadoConta);
+
+		
+		
+		JButton Somar = new JButton("Somar");
+		Somar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String numero1 = txtnumero1.getText();
+				String numero2 = txtnumero2.getText();
+				double numero11 = Double.parseDouble(numero1);
+				double numero22 = Double.parseDouble(numero2);
+				double Resultadosoma = numero11 + numero22;
+				ResultadoConta.setText("Resultado " + Resultadosoma);
+				
+				
+			}
+		});
+		Somar.setBounds(36, 129, 89, 23);
+		contentPane.add(Somar);
+		
+		JButton Subtrair = new JButton("Subtrair");
+		Subtrair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String numero1 = txtnumero1.getText();
+				String numero2 = txtnumero2.getText();
+				double numero11 = Double.parseDouble(numero1);
+				double numero22 = Double.parseDouble(numero2);
+				double Resultadosoma = numero11 - numero22;
+				ResultadoConta.setText("Resultado " + Resultadosoma);
+			}
+		});
+		Subtrair.setBounds(267, 129, 89, 23);
+		contentPane.add(Subtrair);
+		
+		JButton Dividir = new JButton("Dividir");
+		Dividir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String numero1 = txtnumero1.getText();
+				String numero2 = txtnumero2.getText();
+				double numero11 = Double.parseDouble(numero1);
+				double numero22 = Double.parseDouble(numero2);
+				double Resultadosoma = numero11 / numero22;
+				if(numero22 == 0) {
+				    JOptionPane.showMessageDialog(null, "Não é possível dividir por 0");
+				} else {
+				    double resultado = numero11 / numero22;
+				    ResultadoConta.setText("Resultado " + resultado);
+				}
+				
+				
+				
+			}
+		});
+		Dividir.setBounds(36, 163, 89, 23);
+		contentPane.add(Dividir);
+		
+		JButton Multiplicar = new JButton("Multiplicar");
+		Multiplicar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String numero1 = txtnumero1.getText();
+				String numero2 = txtnumero2.getText();
+				double numero11 = Double.parseDouble(numero1);
+				double numero22 = Double.parseDouble(numero2);
+				double Resultadosoma = numero11 * numero22;
+				ResultadoConta.setText("Resultado " + Resultadosoma);
+				
+			}
+		});
+		Multiplicar.setBounds(267, 163, 89, 23);
+		contentPane.add(Multiplicar);
+		
+		
+		
+		
+	
+		}
+		
+	} 
+
+
